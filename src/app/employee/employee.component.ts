@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { employee } from './employee';
-import { EmpservicesService } from './empservices.service';
 
 @Component({
   selector: 'app-employee',
@@ -10,17 +7,9 @@ import { EmpservicesService } from './empservices.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  emp_arr:employee[]=[];
-
-  constructor( private _data:EmpservicesService,
-    private _router:Router,
-    private _acroutes:ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
-   this._data.getallDetails().subscribe((data)=>{
-      this.emp_arr=data
-     });
-
   }
 
 }
