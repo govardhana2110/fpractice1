@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { from } from 'rxjs';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 
 interface Food {
@@ -9,6 +15,8 @@ interface Food {
 }
 
 export interface PeriodicElement {
+
+
   name: string;
   position: number;
   catagory: string;
@@ -37,7 +45,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 
-export class Task1Component implements OnInit {
+export class Task1Component {
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
@@ -49,16 +57,37 @@ export class Task1Component implements OnInit {
   dataSource = ELEMENT_DATA;
   flag:boolean=true;
   flag1:boolean=false;
-  constructor() {
+  animal: string;
+  name: string;
+  constructor(public dialog: MatDialog) {
 
    }
 
-  ngOnInit(): void {
+   openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
-  table1(){
-    this.flag=true;
-    this.flag1=true;
-  }
 
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
