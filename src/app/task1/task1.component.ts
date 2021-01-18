@@ -65,7 +65,32 @@ export class Task1Component {
 
    openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+      width: '500px',
+      height:'400px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  openview(): void {
+    const dialogRef = this.dialog.open(view, {
+      width: '500px',
+      height:'400px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  opendelete(): void {
+    const dialogRef = this.dialog.open(Dialog, {
+      width: '500px',
+      height:'400px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -85,6 +110,34 @@ export class DialogOverviewExampleDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'view.html',
+})
+export class view {
+
+  constructor(
+    public dialogRef: MatDialogRef<view>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'delete.html',
+})
+export class Dialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<Dialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

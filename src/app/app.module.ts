@@ -42,9 +42,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { Task1Component } from './task1/task1.component';
-import { from } from 'rxjs';
 import { ExperimentComponent } from './experiment/experiment.component';
-
+import { DialogOverviewExampleDialog } from "./task1/task1.component";
+import { view } from "./task1/task1.component";
+import {Dialog } from "./task1/task1.component";
+import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +54,13 @@ import { ExperimentComponent } from './experiment/experiment.component';
     AddempComponent,
     EditempComponent,
     Task1Component,
-    ExperimentComponent
+    ExperimentComponent,
+    DialogOverviewExampleDialog,
+    view,
+    Dialog
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     MatTableModule,
@@ -95,7 +101,6 @@ import { ExperimentComponent } from './experiment/experiment.component';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
-    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
