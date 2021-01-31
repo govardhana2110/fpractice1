@@ -14,7 +14,7 @@ interface Food {
 
 }
 
-export interface PeriodicElement {
+export interface details {
 
 
   name: string;
@@ -27,7 +27,7 @@ export interface PeriodicElement {
 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: details[] = [
   {position: 1, name: 'incident', catagory: 'incident', actions: 'H',delete:'',data_type:'integer',last_updated:'06-01-2021'},
   {position: 2, name: 'insurence', catagory: 'person', actions: 'He',delete:'',data_type:'date',last_updated:'06-01-2021'},
   {position: 3, name: 'covered', catagory: 'incident', actions: 'Li',delete:'',data_type:'string',last_updated:'06-01-2021'},
@@ -47,9 +47,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class Task1Component {
   foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    {value: 'steak-0', viewValue: 'Details'},
+
   ];
 
 
@@ -89,8 +88,8 @@ export class Task1Component {
   }
   opendelete(): void {
     const dialogRef = this.dialog.open(Dialog, {
-      width: '500px',
-      height:'400px',
+      width: '300px',
+      height:'150px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -99,9 +98,14 @@ export class Task1Component {
       this.animal = result;
     });
   }
-
+//   clone() {
+//     var cloned = new details[(this.id, this.login, this.name, this.surname, this.phone)];
+//     return cloned;
+// }
 
 }
+
+
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',

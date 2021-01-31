@@ -1,8 +1,11 @@
 
 <div class="container">
-  <h4>Basic mat-select</h4>
+  <mat-toolbar color="primary">
+    <button><mat-icon>menu</mat-icon></button> &nbsp;&nbsp;
+  <h4>Novodhi Insurance</h4>
+</mat-toolbar><br>&nbsp;
   <mat-form-field appearance="fill">
-    <mat-label>Favorite food</mat-label>
+    <mat-label>Select Option</mat-label>
     <mat-select>
       <mat-option *ngFor="let food of foods" [value]="food.value">
         {{food.viewValue}}
@@ -56,8 +59,8 @@
   </ng-container>
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef> Delete </th>
-    <td mat-cell *matCellDef="let element">
-      <button (click)="opendelete()"><mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon></button>
+    <td mat-cell *matCellDef="let element" colour="danger">
+      <button (click)="opendelete()"><mat-icon aria-hidden="false" aria-label="Example delete icon" colour="danger">delete</mat-icon></button>
     </td>
   </ng-container>
 
